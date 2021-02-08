@@ -1,0 +1,172 @@
+{
+    "users": [
+        {
+            "username": "HanakoTaco",
+            "userEmail": "hanako.e.hashiguchi@gmail.com",
+            "id": 1
+        },
+        {
+            "username": "Hank",
+            "userEmail": "hankTheTank@yahoo.com",
+            "id": 2
+        }
+    ],
+    "user_seller": [
+        {
+            "userId": 1,
+            "sellerId": 1
+        }
+    ],
+    "sellers": [
+        {
+            "name": "Jays Smoqued BBQ",
+            "location": "Nashville",
+            "truckTypeId": 1,
+            "varietyId": 3,
+            "summary": "Down Home Southern BBQ",
+            "website": "https://www.jaysmoquedbbq.com/",
+            "id": 1
+        },
+        {
+            "name": "Califarmia Food Truck",
+            "location": "Nashville",
+            "truckTypeId": 1,
+            "varietyId": 4,
+            "summary": "American (New), Latin American, Asian Fusion",
+            "website": "https://www.califarmiatruck.com/",
+            "id": 2
+        },
+        {
+            "name": "Parnassus on Wheels",
+            "location": "Nashville",
+            "truckTypeId": 2,
+            "varietyId": 5,
+            "summary": "A Bookmobile To Feed The Mind",
+            "website": "https://www.parnassusbooks.net/",
+            "id": 3
+        },
+        {
+            "name": "Aussie Pet Mobile Greater Nashville & Middle TN",
+            "location": "Nashville",
+            "truckTypeId": 3,
+            "varietyId": 7,
+            "summary": "Convenient, affordable, reliable and efficient mobile pet grooming service",
+            "website": "https://petgroomermidtn.com/",
+            "id": 4
+        },
+        {
+            "name": "Amelia’s Flower Truck",
+            "location": "Nashville",
+            "truckTypeId": 2,
+            "varietyId": 6,
+            "summary": "The original vintage mobile flower shop",
+            "website": "https://ameliasflowertruck.com/",
+            "id": 5
+        },
+        {
+            "name": "The SWAT Truck",
+            "location": "Nashville",
+            "truckTypeId": 2,
+            "varietyId": 10,
+            "summary": "Style with a twist of boutique",
+            "website": "https://theswattruckboutique.com/",
+            "id": 6
+        },
+        {
+            "name": "Style House Salon",
+            "location": "Nashville",
+            "truckTypeId": 3,
+            "varietyId": 8,
+            "summary": "Style House Salon is your beauty ally",
+            "website": "https://stylehousesalon.com/",
+            "id": 7
+        },
+        {
+            "name": "Zeel",
+            "location": "Nashville",
+            "truckTypeId": 3,
+            "varietyId": 9,
+            "summary": "In-Home Massage in Nashville",
+            "website": "https://www.zeel.com/nashville-massage",
+            "id": 8
+        },
+        {
+            "name": "Music City Brisket",
+            "location": "Nashville",
+            "truckTypeId": 1,
+            "varietyId": 3,
+            "summary": "Serving the finest brisket in town as well as some amazing tacos and other sandwiches!",
+            "website": "https://www.musiccitybrisket.com/",
+            "id": 9
+        },
+        {
+            "name": "S'more Love Bakery",
+            "location": "Nashville",
+            "truckTypeId": 1,
+            "varietyId": 11,
+            "summary": "Nostalgic for the good old days? S'more Love has a campfire treat that will make you feel like a kid again!",
+            "website": "https://smorelovebakery.com/",
+            "id": 10
+        }
+    ],
+    "truckTypes": [
+        {
+            "typeName": "Food Truck",
+            "id": 1
+        },
+        {
+            "typeName": "Product Truck",
+            "id": 2
+        },
+        {
+            "typeName": "Service Truck",
+            "id": 3
+        }
+    ],
+    "varieties": [
+        {
+            "varietyName": "Mexican",
+            "id": 1
+        },
+        {
+            "varietyName": "Vietnamese",
+            "id": 2
+        },
+        {
+            "varietyName": "BBQ",
+            "id": 3
+        },
+        {
+            "varietyName": "Fusion",
+            "id": 4
+        },
+        {
+            "varietyName": "Books",
+            "id": 5
+        },
+        {
+            "varietyName": "Flower",
+            "id": 6
+        },
+        {
+            "varietyName": "Dog Groomer",
+            "id": 7
+        },
+        {
+            "varietyName": "Salon",
+            "id": 8
+        },
+        {
+            "varietyName": "Massage",
+            "id": 9
+        },
+        {
+            "varietyName": "Boutique",
+            "id": 10
+        },
+        {
+            "varietyName": "Dessert",
+            "id": 11
+        }
+    ] 
+}
