@@ -1,9 +1,9 @@
 import React from 'react';
 import { Route, Redirect, Switch} from "react-router-dom"
-import { UserDashboard } from "./views/UserDashboard";
-import { LandingPage } from "./views/LandingPage";
-import { Login } from "./views/Login";
-import { Register } from "./views/Register";
+import { UserDashboard } from "./fullViews/UserDashboard";
+import { LandingPage } from "./fullViews/LandingPage";
+import { Login } from "./fullViews/Login";
+import { Register } from "./fullViews/Register";
 
 export const ApplicationView = () => {
   const activeUser = sessionStorage.getItem("activeUser")
