@@ -9,9 +9,8 @@ import { green, grey, red } from '@material-ui/core/colors';
 const rawTheme = createMuiTheme({
   palette: {
     primary: {
-      light: '#CBD5AF',
-      main: '#B0BC8F',
-      dark: '#708044',
+      light: '#B0BC8F',
+      main: '#708044',
     },
     secondary: {
       light: '#fff5f8',
@@ -40,6 +39,7 @@ const rawTheme = createMuiTheme({
     fontWeightRegular: 400, // Montserrat, Satisfy
     fontWeightMedium: 700, // Montserrat
     fontFamilySecondary: "'Satisfy', cursive",
+    textTransform: "none",
   },
 });
 
@@ -81,7 +81,7 @@ const theme = {
     h4: {
       ...rawTheme.typography.h4,
       ...fontHeader,
-      fontSize: 36,
+      fontSize: 24,
     },
     h5: {
       ...rawTheme.typography.h5,
