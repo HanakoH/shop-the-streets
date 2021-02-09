@@ -27,6 +27,7 @@
             "varietyId": 3,
             "summary": "Down Home Southern BBQ",
             "website": "https://www.jaysmoquedbbq.com/",
+            "imageUrl": "https://d3hbe0kmbam4a5.cloudfront.net/photos/d981176b-1dd8-4ade-90da-0f554d65d5c9.jpg", 
             "id": 1
         },
         {
@@ -36,6 +37,7 @@
             "varietyId": 4,
             "summary": "American (New), Latin American, Asian Fusion",
             "website": "https://www.califarmiatruck.com/",
+            "imageUrl": "https://d3hbe0kmbam4a5.cloudfront.net/photos/deaad07b-e155-4ec1-9582-9b971cbd9b78.jpg",
             "id": 2
         },
         {
@@ -45,15 +47,17 @@
             "varietyId": 5,
             "summary": "A Bookmobile To Feed The Mind",
             "website": "https://www.parnassusbooks.net/",
+            "imageUrl": "https://musingalt.files.wordpress.com/2018/01/screen-shot-2018-01-20-at-4-09-50-pm.jpg?w=730",
             "id": 3
         },
         {
-            "name": "Aussie Pet Mobile Greater Nashville & Middle TN",
+            "name": "Aussie Pet Mobile",
             "location": "Nashville",
             "truckTypeId": 3,
             "varietyId": 7,
             "summary": "Convenient, affordable, reliable and efficient mobile pet grooming service",
             "website": "https://petgroomermidtn.com/",
+            "imageUrl": "https://petgroomermidtn.com/wp-content/themes/apm-2018/schema/16x9.jpg",
             "id": 4
         },
         {
@@ -63,6 +67,7 @@
             "varietyId": 6,
             "summary": "The original vintage mobile flower shop",
             "website": "https://ameliasflowertruck.com/",
+            "imageUrl": "https://lightning100.com/wp-content/uploads/vday.jpg",
             "id": 5
         },
         {
@@ -72,16 +77,8 @@
             "varietyId": 10,
             "summary": "Style with a twist of boutique",
             "website": "https://theswattruckboutique.com/",
+            "imageUrl": "https://cdn.shopify.com/s/files/1/0013/6845/7299/files/SWAT_Truck_Side_816x.jpg?v=1572542081",
             "id": 6
-        },
-        {
-            "name": "Style House Salon",
-            "location": "Nashville",
-            "truckTypeId": 3,
-            "varietyId": 8,
-            "summary": "Style House Salon is your beauty ally",
-            "website": "https://stylehousesalon.com/",
-            "id": 7
         },
         {
             "name": "Zeel",
@@ -90,6 +87,7 @@
             "varietyId": 9,
             "summary": "In-Home Massage in Nashville",
             "website": "https://www.zeel.com/nashville-massage",
+            "imageUrl": "https://inhome.zeel.com/static/media/default.c66c53a8.jpg",
             "id": 8
         },
         {
@@ -99,6 +97,7 @@
             "varietyId": 3,
             "summary": "Serving the finest brisket in town as well as some amazing tacos and other sandwiches!",
             "website": "https://www.musiccitybrisket.com/",
+            "imageUrl": "https://d3hbe0kmbam4a5.cloudfront.net/photos/a3cde3f2-12a8-4881-bab9-dcdae9ce39fa.jpg",
             "id": 9
         },
         {
@@ -108,6 +107,7 @@
             "varietyId": 11,
             "summary": "Nostalgic for the good old days? S'more Love has a campfire treat that will make you feel like a kid again!",
             "website": "https://smorelovebakery.com/",
+            "imageUrl": "https://img1.wsimg.com/isteam/ip/46fa6c9d-280c-4054-a287-215fa9f1269d/smore-truck-crop.jpg",
             "id": 10
         }
     ],

@@ -2,7 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Link from '@material-ui/core/Link';
-import { Field, Form, FormSpy } from 'react-final-form';
+import { Field, Form } from 'react-final-form';
 import Typography from '../components/Typography';
 import AppBarNav from '../partView/AppBarNav';
 import AppForm from '../components/AppForm';
@@ -29,7 +29,7 @@ export function Register() {
   const [sent, setSent] = React.useState(false);
 
   const validate = (values) => {
-    const errors = required(['firstName', 'lastName', 'email', 'password'], values);
+    const errors = required(['firstName', 'lastName', 'email'], values);
 
     if (!errors.email) {
       const emailError = email(values.email, values);
@@ -46,10 +46,10 @@ export function Register() {
   };
 
   return (
-    <React.Fragment>
+    <>
       <AppBarNav />
       <AppForm>
-        <React.Fragment>
+        <>
           <Typography variant="h3" gutterBottom marked="center" align="center">
             Register
           </Typography>
@@ -58,7 +58,7 @@ export function Register() {
               Already have an account?
             </Link>
           </Typography>
-        </React.Fragment>
+        </>
         <Form onSubmit={handleSubmit} subscription={{ submitting: true }} validate={validate}>
           {({ handleSubmit2, submitting }) => (
             <form onSubmit={handleSubmit2} className={classes.form} noValidate>
@@ -95,39 +95,19 @@ export function Register() {
                 name="email"
                 required
               />
-              <Field
-                fullWidth
-                component={RFTextField}
-                disabled={submitting || sent}
-                required
-                name="password"
-                autoComplete="current-password"
-                label="Password"
-                type="password"
-                margin="normal"
-              />
-              <FormSpy subscription={{ submitError: true }}>
-                {({ submitError }) =>
-                  submitError ? (
-                    <FormFeedback className={classes.feedback} error>
-                      {submitError}
-                    </FormFeedback>
-                  ) : null
-                }
-              </FormSpy>
               <FormButton
                 className={classes.button}
                 disabled={submitting || sent}
                 color="secondary"
                 fullWidth
               >
-                {submitting || sent ? 'In progress…' : 'Sign Up'}
+                {submitting || sent ? 'In progress…' : 'Complete Registering'}
               </FormButton>
             </form>
           )}
         </Form>
       </AppForm>
-    </React.Fragment>
+    </>
   );
 }
 
@@ -143,7 +123,7 @@ export function Register() {
 //     const history = useHistory()
 
 //     const existingUserCheck = () => {
-//         return fetch(`http://localhost:8088/register?email=${email.current.value}`)
+//         return fetch(`http://localhost:8088/users?email=${email.current.value}`)
 //             .then(res => res.json())
 //             .then(user => !!user.length)
 //     }
