@@ -41,6 +41,13 @@ const rawTheme = createMuiTheme({
     fontFamilySecondary: "'Satisfy', cursive",
     textTransform: "none",
   },
+  props: {
+    // Name of the component ⚛️
+    MuiButtonBase: {
+      // The properties to apply
+      disableRipple: true, // No more ripple, on the whole application 💣!
+    },
+  },
 });
 
 const fontHeader = {
@@ -64,7 +71,7 @@ const theme = {
     fontHeader,
     h1: {
       ...rawTheme.typography.h1,
-      ...fontHeader,
+      fontWeight: rawTheme.typography.fontWeightRegular,
       letterSpacing: 0,
       fontSize: 60,
     },
