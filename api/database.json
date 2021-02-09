@@ -1,13 +1,15 @@
 {
     "users": [
         {
-            "username": "HanakoTaco",
-            "userEmail": "hanako.e.hashiguchi@gmail.com",
+            "firstName": "Hanako",
+            "lastName": "Hashiguchi",
+            "email": "hanako.e.hashiguchi@gmail.com",
             "id": 1
         },
         {
-            "username": "Hank",
-            "userEmail": "hankTheTank@yahoo.com",
+            "firstName": "Hank",
+            "lastName": "Hashiguchi",
+            "email": "hanktheTank@gmail.com",
             "id": 2
         }
     ],
