@@ -38,14 +38,10 @@ const TruckCard = props => {
         .then(sellerId => !!sellerId.length)
   }
 
-  const sleep = ms => new Promise(resolve => setTimeout(resolve, ms))
-
   const handleChange = async e => {
-    await sleep(300)
-    setChecked(!(e.target.checked));
-    console.log(checked)
+
     const loved = e.target.value
-    await existingLovedCheck(loved)
+    existingLovedCheck(loved)
             .then((lovedExists) => {
               if (!lovedExists) {
                   fetch("http://localhost:8088/user_seller", {
@@ -62,7 +58,8 @@ const TruckCard = props => {
                           if (createdLove.hasOwnProperty("id")) {
                               localStorage.setItem(`checkedBox${createdLove.sellerId}`, true)
                             }
-                      })
+                            getUserSellers()
+                      }) 
               } else if(lovedExists){  
                   const singleUserSeller = userSellers.find(unLiked => {
                     console.log(unLiked.sellerId)

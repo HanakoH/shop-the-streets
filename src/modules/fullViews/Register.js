@@ -51,11 +51,9 @@ export function Register() {
     return errors;
   };
 
-  const sleep = ms => new Promise(resolve => setTimeout(resolve, ms))
 
   const onSubmit = async values => {
-    await sleep(300)
-  
+
     existingUserCheck(values)
             .then((userExists) => {
                 if (!userExists) {
