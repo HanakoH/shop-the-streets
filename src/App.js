@@ -11,6 +11,7 @@ const rawTheme = createMuiTheme({
     primary: {
       light: '#B0BC8F',
       main: '#708044',
+      dark: "#000000"
     },
     secondary: {
       light: '#fff5f8',
@@ -42,10 +43,8 @@ const rawTheme = createMuiTheme({
     textTransform: "none",
   },
   props: {
-    // Name of the component ⚛️
     MuiButtonBase: {
-      // The properties to apply
-      disableRipple: true, // No more ripple, on the whole application 💣!
+      disableRipple: true,
     },
   },
 });

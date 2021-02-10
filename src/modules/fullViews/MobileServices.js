@@ -10,11 +10,11 @@ const MobileServices = () => {
         <AppBarNav />
       </Grid>
       <Grid item container>
-        <Grid item xs={false} sm={2} />
-        <Grid item xs={12} sm={8}>
+      <Grid item xs={false} sm={1} md={2} />
+        <Grid item xs={12} sm={10} md={8}>
           <MobileServicesContent />
         </Grid>
-        <Grid item xs={false} sm={2} />
+        <Grid item xs={false} sm={1} md={2}/>
       </Grid>
     </Grid>
   );

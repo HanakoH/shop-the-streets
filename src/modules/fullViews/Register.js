@@ -1,8 +1,7 @@
-import React from 'react';
+import React, {useRef, useState} from 'react';
+import { Field, Form, FormSpy } from 'react-final-form';
 import { makeStyles } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
 import Link from '@material-ui/core/Link';
-import { Field, Form } from 'react-final-form';
 import Typography from '../components/Typography';
 import AppBarNav from '../partView/AppBarNav';
 import AppForm from '../components/AppForm';
@@ -10,6 +9,8 @@ import { email, required } from '../partView/auth/Validation';
 import RFTextField from '../partView/auth/RFTextField';
 import FormButton from '../partView/auth/FormButton';
 import FormFeedback from '../partView/auth/FormFeedback';
+import { useHistory } from "react-router-dom"
+import Grid from '@material-ui/core/Grid';
 
 const styles = makeStyles((theme) => ({
   form: {
@@ -24,9 +25,19 @@ const styles = makeStyles((theme) => ({
   },
 }));
 
+
 export function Register() {
+  const history = useHistory()
+  const conflictDialog = useRef()
   const classes = styles();
-  const [sent, setSent] = React.useState(false);
+  const [sent, setSent] = useState(false);
+
+  const existingUserCheck = async values => {
+    const email = values.email
+    return await fetch(`http://localhost:8088/users?email=${email}`)
+        .then(res => res.json())
+        .then(user => !!user.length)
+  }
 
   const validate = (values) => {
     const errors = required(['firstName', 'lastName', 'email'], values);
@@ -37,16 +48,52 @@ export function Register() {
         errors.email = email(values.email, values);
       }
     }
-
     return errors;
   };
 
-  const handleSubmit = () => {
-    setSent(true);
-  };
+  const sleep = ms => new Promise(resolve => setTimeout(resolve, ms))
+
+  const onSubmit = async values => {
+    await sleep(300)
+  
+    existingUserCheck(values)
+            .then((userExists) => {
+                if (!userExists) {
+                    fetch("http://localhost:8088/users", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({
+                          firstName: values.firstName,
+                          lastName: values.lastName,
+                          email: values.email
+                        })
+                    })
+                        .then(_ => _.json())
+                        .then(createdUser => {
+                            if (createdUser.hasOwnProperty("id")) {
+                                sessionStorage.setItem("activeUser", createdUser.id)
+                                sessionStorage.setItem("userName", createdUser.firstName)
+                              }
+                            history.push("/dashboard")
+                            setSent(true)
+                        })
+                } else {
+                    conflictDialog.current.showModal()
+                  }
+            })
+}
 
   return (
     <>
+      <dialog className="dialog dialog--password" ref={conflictDialog}>
+          <div>Account with that email address already exists</div>
+          <button className="button--close" 
+          onClick={e => conflictDialog.current.close()}
+          >
+            Close</button>
+      </dialog>
       <AppBarNav />
       <AppForm>
         <>
@@ -59,9 +106,9 @@ export function Register() {
             </Link>
           </Typography>
         </>
-        <Form onSubmit={handleSubmit} subscription={{ submitting: true }} validate={validate}>
-          {({ handleSubmit2, submitting }) => (
-            <form onSubmit={handleSubmit2} className={classes.form} noValidate>
+        <Form onSubmit={onSubmit} subscription={{ submitting: true }} validate={validate}>
+          {({ handleSubmit, submitting }) => (
+            <form onSubmit={handleSubmit} className={classes.form} noValidate>
               <Grid container spacing={2}>
                 <Grid item xs={12} sm={6}>
                   <Field
@@ -71,6 +118,7 @@ export function Register() {
                     fullWidth
                     label="First name"
                     name="firstName"
+                    size="large"
                     required
                   />
                 </Grid>
@@ -81,6 +129,7 @@ export function Register() {
                     fullWidth
                     label="Last name"
                     name="lastName"
+                    size="large"
                     required
                   />
                 </Grid>
@@ -93,15 +142,26 @@ export function Register() {
                 label="Email"
                 margin="normal"
                 name="email"
+                size="large"
                 required
               />
+              <FormSpy subscription={{ submitError: true }}>
+                {({ submitError }) =>
+                  submitError ? (
+                    <FormFeedback className={classes.feedback} error>
+                      {submitError}
+                    </FormFeedback>
+                  ) : null
+                }
+              </FormSpy>
               <FormButton
                 className={classes.button}
                 disabled={submitting || sent}
+                size="large"
                 color="secondary"
                 fullWidth
               >
-                {submitting || sent ? 'In progress…' : 'Complete Registering'}
+                {submitting || sent ? 'In progress…' : 'Register'}
               </FormButton>
             </form>
           )}
@@ -110,84 +170,3 @@ export function Register() {
     </>
   );
 }
-
-// import React, { useRef } from "react"
-// import { useHistory } from "react-router-dom"
-// import { Button, Form,  } from 'semantic-ui-react'
-
-// export const Register = (props) => {
-//     const firstName = useRef()
-//     const lastName = useRef()
-//     const email = useRef()
-//     const conflictDialog = useRef()
-//     const history = useHistory()
-
-//     const existingUserCheck = () => {
-//         return fetch(`http://localhost:8088/users?email=${email.current.value}`)
-//             .then(res => res.json())
-//             .then(user => !!user.length)
-//     }
-
-//     const handleRegister = (e) => {
-//         e.preventDefault()
-
-
-//         existingUserCheck()
-//             .then((userExists) => {
-//                 if (!userExists) {
-//                     fetch("http://localhost:8088/register", {
-//                         method: "POST",
-//                         headers: {
-//                             "Content-Type": "application/json"
-//                         },
-//                         body: JSON.stringify({
-//                             email: email.current.value,
-//                             firstName: firstName.current.value,
-//                             lastName: lastName.current.value
-//                         })
-//                     })
-//                         .then(_ => _.json())
-//                         .then(createdUser => {
-//                             if (createdUser.hasOwnProperty("id")) {
-//                                 sessionStorage.setItem("activeCoach", createdUser.id)
-//                                 sessionStorage.setItem("coachName", createdUser.first_name)
-//                                 history.push("/WelcomeCoach")
-//                             }
-//                         })
-//                 }
-//                 else {
-//                     conflictDialog.current.showModal()
-//                 }
-//             })
-        
-//     }
-
-//     return (
-//         <main style={{ textAlign: "center" }}>
-
-//             <dialog className="dialog dialog--password" ref={conflictDialog}>
-//                 <div>Account with that email address already exists</div>
-//                 <button className="button--close" onClick={e => conflictDialog.current.close()}>Close</button>
-//             </dialog>
-
-//             <Form  widths='equal' className="form--login" onSubmit={handleRegister}>
-//                 <Header as='h1' className="h3 mb-3 font-weight-normal">Please Register for Happy Analytics</Header>
-//                 <Form.Field>
-//                     <label htmlFor="firstName"> First Name </label>
-//                     <input ref={firstName} type="text" name="firstName" className="form-control" placeholder="First name" required autoFocus />
-//                 </Form.Field>
-//                 <Form.Field>
-//                     <label htmlFor="lastName"> Last Name </label>
-//                     <input ref={lastName} type="text" name="lastName" className="form-control" placeholder="Last name" required />
-//                 </Form.Field>
-//                 <Form.Field>
-//                     <label htmlFor="inputEmail"> Email address </label>
-//                     <input ref={email} type="email" name="email" className="form-control" placeholder="Email address" required />
-//                 </Form.Field>
-//                 <Form.Field>
-//                     <Button type="submit"> Login </Button>
-//                 </Form.Field>
-//             </Form>
-//         </main>
-//     )
-// }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Redirect, Switch} from "react-router-dom"
+import { Route, Switch} from "react-router-dom"
 import { UserDashboard } from "./fullViews/UserDashboard";
 import { LandingPage } from "./fullViews/LandingPage";
 import { Login } from "./fullViews/Login";
@@ -9,7 +9,6 @@ import StreetVendors from "./fullViews/StreetVendors";
 import MobileServices from './fullViews/MobileServices';
 
 export const ApplicationView = () => {
-  const activeUser = sessionStorage.getItem("activeUser")
 
   return (
     <Switch>
@@ -32,7 +31,7 @@ export const ApplicationView = () => {
         <MobileServices />
       </Route>
       <Route exact path="/dashboard">
-        {activeUser ? <UserDashboard /> : <Redirect to="LandingPage" /> }
+        <UserDashboard />
       </Route>
     </Switch>
   )  
