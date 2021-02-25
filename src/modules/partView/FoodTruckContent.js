@@ -1,7 +1,7 @@
 import React from "react";
 import TruckCard from "../components/TruckCard";
 import { Grid } from "@material-ui/core";
-import { sellers }  from "../../database.json";
+import { sellers }  from "../api/database.json";
 
 const FoodTruckContent = () => {
   const getFoodTruckCard = foodTruckObj => {
