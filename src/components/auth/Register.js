@@ -1,15 +1,15 @@
 import React, {useRef, useState} from 'react';
+import { useHistory } from "react-router-dom"
 import { Field, Form, FormSpy } from 'react-final-form';
 import { makeStyles } from '@material-ui/core/styles';
 import Link from '@material-ui/core/Link';
-import Typography from '../components/Typography';
-import AppBarNav from '../partView/AppBarNav';
-import AppForm from '../components/AppForm';
-import { email, required } from '../partView/auth/Validation';
-import RFTextField from '../partView/auth/RFTextField';
-import FormButton from '../partView/auth/FormButton';
-import FormFeedback from '../partView/auth/FormFeedback';
-import { useHistory } from "react-router-dom"
+import AppBarNav from '../modules/AppBarNav';
+import Typography from '../parts/Typography';
+import AppForm from '../parts/AppForm';
+import { email, required } from './form/Validation';
+import RFTextField from './form/RFTextField';
+import FormButton from './form/FormButton';
+import FormFeedback from './form/FormFeedback';
 import Grid from '@material-ui/core/Grid';
 
 const styles = makeStyles((theme) => ({
@@ -74,7 +74,7 @@ export function Register() {
                                 sessionStorage.setItem("activeUser", createdUser.id)
                                 sessionStorage.setItem("userName", createdUser.firstName)
                               }
-                            history.push("/dashboard")
+                            history.push("/")
                             setSent(true)
                         })
                 } else {

@@ -3,7 +3,7 @@
     {
       "firstName": "Hanako",
       "lastName": "Hashiguchi",
-      "email": "Hanako.e.hashiguchi@gmail.com",
+      "email": "Hanako.E.Hashiguchi@gmail.com",
       "id": 1
     },
     {
@@ -16,28 +16,21 @@
   "user_seller": [
     {
       "userId": 1,
-      "sellerId": 3,
-      "id": 5
-    },
-    {
-      "userId": 1,
-      "sellerId": 5,
-      "id": 6
-    },
-    {
-      "userId": 1,
-      "sellerId": 6,
+      "sellerId": 9,
+      "checked": true,
       "id": 7
     },
     {
       "userId": 1,
-      "sellerId": 10,
-      "id": 10
+      "sellerId": 2,
+      "checked": false,
+      "id": 8
     },
     {
       "userId": 1,
-      "sellerId": 1,
-      "id": 11
+      "sellerId": 10,
+      "checked": false,
+      "id": 9
     }
   ],
   "sellers": [

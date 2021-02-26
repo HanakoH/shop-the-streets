@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import Button from '../components/Button';
-import Typography from '../components/Typography';
-import ProductHeroLayout from '../components/ProductHeroLayout';
+import Button from '../parts/Button';
+import Typography from '../parts/Typography';
+import ProductHeroLayout from '../parts/ProductHeroLayout';
 
 
 const backgroundImage =
