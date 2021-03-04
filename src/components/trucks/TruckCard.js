@@ -10,7 +10,9 @@ import Link from "@material-ui/core/Link"
 
 export const TruckCard = props => {
   const { name, website, summary, imageUrl, id } = props;
+ 
   const activeUser = +sessionStorage.getItem("activeUser")
+
 
   const openInNewTab = (url) => {
     const newWindow = window.open(url, '_blank', 'noopener, noreferrer')
@@ -32,7 +34,7 @@ export const TruckCard = props => {
         </Typography>
       </CardContent>
       {activeUser ? 
-        (<LoveCheckbox key={id} id={id} activeUser={activeUser}/>)
+        (<LoveCheckbox key={props.userSellerId} id={props.userSellerId} activeUser={activeUser} check={props.check}/>)
         : (<Link href="/register">Register to love this!</Link>)  
       }
     </Card>

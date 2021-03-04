@@ -5,7 +5,7 @@ export const UserSellerContext = createContext()
 export const UserSellerProvider = (props) => {
     const [userSellers, setUserSellers] = useState([])
     const activeUser = +sessionStorage.getItem("activeUser")
-    
+
     const addUserSeller = async (userSeller) => {
         const res = await fetch("http://localhost:8088/user_seller", {
             method: "POST",
@@ -26,19 +26,10 @@ export const UserSellerProvider = (props) => {
         setUserSellers(filtered)
     }
 
-    const getUserSellerBySellerId = async (sellerId) => {
-        const res = await fetch(`http://localhost:8088/user_seller?sellerId=${sellerId}`)
+    const getUserSellerBySellerId = async (userSellerId) => {
+        const res = await fetch(`http://localhost:8088/user_seller/${userSellerId}`)
         const data = await res.json()
-        const isSeller = (!!data.length)
-        return [isSeller, data]
-    }
-
-    const deleteUserSeller = async (id) => {
-        await fetch(`http://localhost:8088/user_seller/${id}`, {
-            method: 'DELETE'
-        })
-
-        setUserSellers(userSellers.filter((userSeller) => userSeller.id !== id))
+        return data
     }
 
     const updateUserSeller = async (userSeller) => {
@@ -60,7 +51,7 @@ export const UserSellerProvider = (props) => {
     
     return (
         <UserSellerContext.Provider value={{
-            userSellers, addUserSeller, getUserSellers, getUserSellerBySellerId, deleteUserSeller, updateUserSeller
+            userSellers, addUserSeller, getUserSellers, getUserSellerBySellerId, updateUserSeller
         }}>
             {props.children}
         </UserSellerContext.Provider>

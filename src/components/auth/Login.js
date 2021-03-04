@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom"
 import { Field, Form, FormSpy } from 'react-final-form';
 import { makeStyles } from '@material-ui/core/styles';
 import Link from '@material-ui/core/Link';
-import AppBarNav from '../modules/AppBarNav';
+import AppBarNav from '../containers/AppBarNav';
 import Typography from '../parts/Typography';
 import AppForm from '../parts/AppForm';
 import { email, required } from './form/Validation';
@@ -54,7 +54,7 @@ export function Login() {
         existingUserCheck(values)
             .then(exists => {
                 if (exists) {
-                    sessionStorage.setItem("activeUser", exists.id)
+                    const activeUser = sessionStorage.setItem("activeUser", exists.id)
                     sessionStorage.setItem("userName", exists.firstName)
                     setSent(true)
                     history.push("/")

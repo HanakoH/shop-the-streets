@@ -1,16 +1,10 @@
-import React, { useContext, useEffect } from "react";
+import React from "react";
 import { Grid } from "@material-ui/core";
 import Typography from "../parts/Typography";
-import AppBarNav from "../modules/AppBarNav";
+import AppBarNav from "../containers/AppBarNav";
 import { LovedTrucksContent } from "./TruckContent";
-import { UserSellerContext } from "./UserSellerProvider";
 
-const LovedTrucks = () => {
-  const { userSellers, getUserSellers } = useContext(UserSellerContext)
-
-  useEffect(() => {
-    getUserSellers()
-  }, [])
+const LovedTrucks = ({userSellers}) => {
 
   return (
     <Grid container direction="column">

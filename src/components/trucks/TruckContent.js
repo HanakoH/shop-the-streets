@@ -1,15 +1,37 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { TruckCard } from "./TruckCard";
 import { Grid } from "@material-ui/core";
 
-export const FoodTrucksContent = ({trucks}) => {
+
+export const FoodTrucksContent = ({trucks, userSellers}) => {
+    
+    // useEffect(() => {
+    //     const sellers = userSellers
+    //  }, [])
+
     const getFoodTruckCard = foodTruckObj => {
+        const sellers = userSellers
         if (foodTruckObj.truckTypeId === 1 ){
-            return (
-            <Grid item xs={12} sm={6} md={4}>
-                <TruckCard {...foodTruckObj} />
-            </Grid>
-            );
+            const foundUserSeller = sellers.find(userSeller => userSeller.sellerId === foodTruckObj.id)
+            if (foundUserSeller && (foundUserSeller.checked === true)) {
+                return (
+                <Grid item xs={12} sm={6} md={4}>
+                    <TruckCard {...foodTruckObj} check={true} userSellerId={foundUserSeller.id}/>
+                </Grid>
+                );
+            } else if (foundUserSeller){
+                return (
+                <Grid item xs={12} sm={6} md={4}>
+                    <TruckCard {...foodTruckObj} check={false} userSellerId={foundUserSeller.id} />
+                </Grid>
+                );
+            } else {
+                return (
+                <Grid item xs={12} sm={6} md={4}>
+                    <TruckCard {...foodTruckObj} check={false} userSellerId={null} />
+                </Grid>
+                );
+            }
         }
     };
 
@@ -21,7 +43,7 @@ export const FoodTrucksContent = ({trucks}) => {
     );
 };
 
-export const StreetVendorsContent = ({trucks}) => {
+export const StreetVendorsContent = ({trucks, userSellers}) => {
     const getStreetVendorCard = streetVendorObj => {
         if (streetVendorObj.truckTypeId === 2 ){
         return (
@@ -40,7 +62,7 @@ export const StreetVendorsContent = ({trucks}) => {
     );
 };
 
-export const MobileServicesContent = ({trucks}) => {
+export const MobileServicesContent = ({trucks, userSellers}) => {
     const getMobileServicesCard = mobileServicesObj => {
         if (mobileServicesObj.truckTypeId === 3 ){
             return (
@@ -64,7 +86,7 @@ export const LovedTrucksContent = ({userSellers}) => {
         if (lovedTrucksObj.checked){
             return (
             <Grid item xs={12} sm={6} md={4}>
-                <TruckCard {...lovedTrucksObj.seller}/>
+                <TruckCard {...lovedTrucksObj.seller} />
             </Grid>
             );
         }
