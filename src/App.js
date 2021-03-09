@@ -1,10 +1,11 @@
 import React from 'react';
-import { BrowserRouter as Router } from "react-router-dom";
-import { ApplicationView } from './modules/ApplicationView';
+import { ApplicationView } from './components/ApplicationView';
 import CssBaseline from '@material-ui/core/CssBaseline';
+import { UserSellerProvider } from "./components/trucks/UserSellerProvider";
 import { ThemeProvider } from '@material-ui/core/styles';
 import { createMuiTheme } from '@material-ui/core/styles';
 import { green, grey, red } from '@material-ui/core/colors';
+import { TruckProvider } from './components/trucks/TruckProvider';
 
 const rawTheme = createMuiTheme({
   palette: {
@@ -118,10 +119,12 @@ const theme = {
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <Router>
-        <CssBaseline />
-        <ApplicationView />
-      </Router>
+      <UserSellerProvider>
+        <TruckProvider>
+          <CssBaseline />
+          <ApplicationView />
+        </TruckProvider>
+      </UserSellerProvider>  
     </ThemeProvider>
   );
 }

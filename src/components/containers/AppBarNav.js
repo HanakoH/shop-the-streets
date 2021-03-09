@@ -1,15 +1,15 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import AppBar from '../components/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '../components/Typography';
-import Button from '../components/Button';
+import { useHistory } from "react-router-dom"
+import AppBar from '../parts/AppBar';
+import Toolbar from '../parts/Toolbar';
+import Typography from '../parts/Typography';
+import Button from '../parts/Button';
 import IconButton from "@material-ui/core/IconButton";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import Link from "@material-ui/core/Link";
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
-import { useHistory } from "react-router-dom"
 
 
 const styles = makeStyles((theme) => ({
@@ -49,7 +49,7 @@ export default function AppBarNav() {
   };
 
   const goToDash = () => {
-    history.push("/dashboard")
+    history.push("/")
   }
 
   return (
@@ -67,10 +67,10 @@ export default function AppBarNav() {
           <Button href="/street-vendors">Street Vendors</Button>
           <Button href="/mobile-services">Mobile Services</Button>
           {!activeUser && (
-          <>
-          <Button variant="outlined" color="inherit" background="white" href="/login">Login</Button>
-          <Button variant="contained" color="primary" href="/register">Register</Button>
-          </>  
+            <>
+            <Button variant="outlined" color="inherit" background="white" href="/login">Login</Button>
+            <Button variant="contained" color="primary" href="/register">Register</Button>
+            </>  
           )}
           {activeUser && (
             <div>

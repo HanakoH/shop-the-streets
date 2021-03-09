@@ -1,15 +1,15 @@
 import React, {useRef, useState} from 'react';
+import { useHistory } from "react-router-dom"
 import { Field, Form, FormSpy } from 'react-final-form';
 import { makeStyles } from '@material-ui/core/styles';
 import Link from '@material-ui/core/Link';
-import Typography from '../components/Typography';
-import AppBarNav from '../partView/AppBarNav';
-import AppForm from '../components/AppForm';
-import { email, required } from '../partView/auth/Validation';
-import RFTextField from '../partView/auth/RFTextField';
-import FormButton from '../partView/auth/FormButton';
-import FormFeedback from '../partView/auth/FormFeedback';
-import { useHistory } from "react-router-dom"
+import AppBarNav from '../containers/AppBarNav';
+import Typography from '../parts/Typography';
+import AppForm from '../parts/AppForm';
+import { email, required } from './form/Validation';
+import RFTextField from './form/RFTextField';
+import FormButton from './form/FormButton';
+import FormFeedback from './form/FormFeedback';
 
 const useStyles = makeStyles((theme) => ({
   form: {
@@ -50,19 +50,14 @@ export function Login() {
             .then(user => user.length ? user[0] : false)
     }
 
-    const sleep = ms => new Promise(resolve => setTimeout(resolve, ms))
-
     const onSubmit = async values => {
-        await sleep(300)
-        console.log(values)
         existingUserCheck(values)
             .then(exists => {
                 if (exists) {
-                    
-                    sessionStorage.setItem("activeUser", exists.id)
+                    const activeUser = sessionStorage.setItem("activeUser", exists.id)
                     sessionStorage.setItem("userName", exists.firstName)
-                    history.push("/dashboard")
                     setSent(true)
+                    history.push("/")
                 } else {
                     existDialog.current.showModal()
                 }
