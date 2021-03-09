@@ -27,7 +27,7 @@ export const ApplicationView = () => {
         render={() => {
           if (activeUser) {
             return (
-              <LovedTrucks activeUser={activeUser} userSellers={userSellers}/>
+              <LovedTrucks trucks={trucks} userSellers={userSellers}/>
               );
             } else {
               return (

@@ -6,6 +6,13 @@ export const UserSellerProvider = (props) => {
     const [userSellers, setUserSellers] = useState([])
     const activeUser = +sessionStorage.getItem("activeUser")
 
+    const getUserSellers = async () => {
+        const res = await fetch("http://localhost:8088/user_seller?_expand=seller")
+        const data = await res.json()
+        const filtered = await data.filter(single => single.userId === activeUser )
+        setUserSellers(filtered)
+    }
+
     const addUserSeller = async (userSeller) => {
         const res = await fetch("http://localhost:8088/user_seller", {
             method: "POST",
@@ -17,13 +24,6 @@ export const UserSellerProvider = (props) => {
         const data = await res.json()
 
         setUserSellers([...userSellers, data])
-    }
-
-    const getUserSellers = async () => {
-        const res = await fetch("http://localhost:8088/user_seller?_expand=seller")
-        const data = await res.json()
-        const filtered = await data.filter(single => single.userId === activeUser )
-        setUserSellers(filtered)
     }
 
     const getUserSellerBySellerId = async (userSellerId) => {
@@ -45,13 +45,19 @@ export const UserSellerProvider = (props) => {
 
         const data = await res.json()
 
-        setUserSellers(data)
+        setUserSellers([...userSellers, data])
     }
-    
+    const deleteUserSeller = async (id) => {
+        await fetch(`http://localhost:8088/user_seller/${id}`, {
+            method: 'DELETE'
+        })
+
+        setUserSellers(userSellers.filter((userSeller) => userSeller.id !== id))
+    }
     
     return (
         <UserSellerContext.Provider value={{
-            userSellers, addUserSeller, getUserSellers, getUserSellerBySellerId, updateUserSeller
+            userSellers, addUserSeller, getUserSellers, getUserSellerBySellerId, updateUserSeller, deleteUserSeller
         }}>
             {props.children}
         </UserSellerContext.Provider>

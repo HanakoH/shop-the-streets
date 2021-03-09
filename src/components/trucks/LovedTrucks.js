@@ -4,7 +4,7 @@ import Typography from "../parts/Typography";
 import AppBarNav from "../containers/AppBarNav";
 import { LovedTrucksContent } from "./TruckContent";
 
-const LovedTrucks = ({userSellers}) => {
+const LovedTrucks = ({trucks, userSellers}) => {
 
   return (
     <Grid container direction="column">
@@ -17,7 +17,7 @@ const LovedTrucks = ({userSellers}) => {
       <Grid item container>
         <Grid item xs={1} />
         <Grid item xs={10}>
-          <LovedTrucksContent userSellers={userSellers} />
+          <LovedTrucksContent trucks={trucks} userSellers={userSellers} />
         </Grid>
         <Grid item xs={1} />
       </Grid>

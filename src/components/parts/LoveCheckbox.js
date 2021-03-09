@@ -4,33 +4,32 @@ import Favorite from '@material-ui/icons/Favorite';
 import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
 import { UserSellerContext } from '../trucks/UserSellerProvider';
 
-export const LoveCheckbox = ({activeUser, id, check}) => {
-    const { addUserSeller, getUserSellers, getUserSellerBySellerId, updateUserSeller} = useContext(UserSellerContext)
+export const LoveCheckbox = ({activeUser, id, check, sellerId}) => {
+    const { addUserSeller, getUserSellers, getUserSellerBySellerId, deleteUserSeller} = useContext(UserSellerContext)
     const [checked, setChecked] = useState(check);
 
     useEffect(() => {
       getUserSellers()
     }, [])
-
+     
     const handleChange = async (e) => {
+      e.preventDefault()
       const loved = e.target.value
-      const truckToLove = await getUserSellerBySellerId(loved)
-      console.log(truckToLove)
-      if (!truckToLove) {
-        addUserSeller({
-          userId: activeUser,
-          sellerId: +id,
-          checked: true,
-        })
-        getUserSellers()
-        setChecked(true)
-      } else if(truckToLove.checked === true) {
-        updateUserSeller(truckToLove)
-        setChecked(false)
-      } else {
-        updateUserSeller(truckToLove)
-        setChecked(true)
-      }
+      let truckToLove = ""
+
+        if(loved){
+          truckToLove = await getUserSellerBySellerId(loved)
+            deleteUserSeller(id)
+            getUserSellers()
+            setChecked(false)
+        } else {
+            addUserSeller({
+              userId: activeUser,
+              sellerId: +sellerId
+            })
+            getUserSellers()
+            setChecked(true)
+        }
     }
 
     return (
@@ -40,8 +39,7 @@ export const LoveCheckbox = ({activeUser, id, check}) => {
             onClick={handleChange}
             icon={<FavoriteBorder />} 
             checkedIcon={<Favorite />} 
-            value={id}
-            name="loveThis" 
+            value={id} 
         />
       </>
     )    
