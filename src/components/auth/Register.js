@@ -74,7 +74,7 @@ export function Register() {
                                 sessionStorage.setItem("activeUser", createdUser.id)
                                 sessionStorage.setItem("userName", createdUser.firstName)
                               }
-                            history.push("/")
+                            history.push("/dashboard")
                             setSent(true)
                         })
                 } else {

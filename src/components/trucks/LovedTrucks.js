@@ -17,7 +17,7 @@ const LovedTrucks = ({trucks, userSellers}) => {
       <Grid item container>
         <Grid item xs={1} />
         <Grid item xs={10}>
-          <LovedTrucksContent trucks={trucks} userSellers={userSellers} />
+          {userSellers.length > 0 ? (<LovedTrucksContent trucks={trucks} userSellers={userSellers} />) : ("You don't love any of our vendors yet!")}
         </Grid>
         <Grid item xs={1} />
       </Grid>
