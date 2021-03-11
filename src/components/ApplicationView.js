@@ -23,22 +23,12 @@ export const ApplicationView = () => {
 
   return (
     <Switch>
-      <Route exact path="/"
-        render={() => {
-          if (activeUser) {
-            return (
-              <LovedTrucks trucks={trucks} userSellers={userSellers}/>
-              );
-            } else {
-              return (
-                <>
-                  <AppBarNav />
-                  <LandingPageHero />  
-                </>
-              )    
-          }
-        }}
-      />
+      <Route exact path="/">
+        <>
+          <AppBarNav />
+          <LandingPageHero />  
+        </>
+      </Route>
       <Route exact path="/login"
         render={() => {
           if (!activeUser) {
@@ -46,7 +36,7 @@ export const ApplicationView = () => {
               <Login />
             );
           } else {
-            return <Redirect to="/" />
+            return <Redirect to="/dashboard" />
           }
         }}
       />
@@ -56,10 +46,13 @@ export const ApplicationView = () => {
               <Register />
             );
           } else {
-            return <Redirect to="/" />
+            return <Redirect to="/dashboard" />
           }
         }}
       />
+      <Route exact path="/dashboard">
+        <LovedTrucks trucks={trucks} userSellers={userSellers}/>
+      </Route>
       <Route exact path="/food-trucks">
         <FoodTrucks trucks={trucks} userSellers={userSellers}/>
       </Route>

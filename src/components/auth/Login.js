@@ -57,7 +57,7 @@ export function Login() {
                     const activeUser = sessionStorage.setItem("activeUser", exists.id)
                     sessionStorage.setItem("userName", exists.firstName)
                     setSent(true)
-                    history.push("/")
+                    history.push("/dashboard")
                 } else {
                     existDialog.current.showModal()
                 }

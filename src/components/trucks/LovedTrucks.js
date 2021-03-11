@@ -3,6 +3,7 @@ import { Grid } from "@material-ui/core";
 import Typography from "../parts/Typography";
 import AppBarNav from "../containers/AppBarNav";
 import { LovedTrucksContent } from "./TruckContent";
+import NoLovedTrucks from "./NoLovedTrucks";
 
 const LovedTrucks = ({trucks, userSellers}) => {
 
@@ -17,7 +18,7 @@ const LovedTrucks = ({trucks, userSellers}) => {
       <Grid item container>
         <Grid item xs={1} />
         <Grid item xs={10}>
-          <LovedTrucksContent trucks={trucks} userSellers={userSellers} />
+          {userSellers.length > 0 ? (<LovedTrucksContent trucks={trucks} userSellers={userSellers} />) : (<NoLovedTrucks />)}
         </Grid>
         <Grid item xs={1} />
       </Grid>

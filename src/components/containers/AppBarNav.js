@@ -49,7 +49,7 @@ export default function AppBarNav() {
   };
 
   const goToDash = () => {
-    history.push("/")
+    history.push("/dashboard")
   }
 
   return (
@@ -57,12 +57,26 @@ export default function AppBarNav() {
     <div className={classes.root}>
       <AppBar position="static" style={{background: "white"}}>
         <Toolbar>
-          <IconButton className={classes.logo} href="/">
-            <img src="/images/NoTextLogo.png" className={classes.logo} alt='Logo with an outer circle of green and an inner circle of green'/>
-          </IconButton>
-          <Typography variant="h4" className={classes.title} component={Link} href="/" color="textPrimary" underline={'none'} >
-            Shop the Streets
-          </Typography>
+          {!activeUser && (
+          <>
+            <IconButton className={classes.logo} href="/">
+              <img src="/images/NoTextLogo.png" className={classes.logo} alt='Logo with an outer circle of green and an inner circle of green'/>
+            </IconButton>
+            <Typography variant="h4" className={classes.title} component={Link} href="/" color="textPrimary" underline={'none'} >
+              Shop the Streets
+            </Typography>
+          </>
+          )}
+          {activeUser && (
+          <>
+            <IconButton className={classes.logo} href="/dashboard">
+              <img src="/images/NoTextLogo.png" className={classes.logo} alt='Logo with an outer circle of green and an inner circle of green'/>
+            </IconButton>
+            <Typography variant="h4" className={classes.title} component={Link} href="/dashboard" color="textPrimary" underline={'none'} >
+              Shop the Streets
+            </Typography>
+          </>
+          )}
           <Button href="/food-trucks">Food Trucks</Button>
           <Button href="/street-vendors">Street Vendors</Button>
           <Button href="/mobile-services">Mobile Services</Button>

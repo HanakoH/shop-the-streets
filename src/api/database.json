@@ -11,6 +11,12 @@
       "lastName": "Hashiguchi",
       "email": "hanktheTank@gmail.com",
       "id": 2
+    },
+    {
+      "firstName": "Hello",
+      "lastName": "Kitty",
+      "email": "hello@kitty.com",
+      "id": 3
     }
   ],
   "user_seller": [
@@ -48,6 +54,11 @@
       "userId": 2,
       "sellerId": 8,
       "id": 16
+    },
+    {
+      "userId": 3,
+      "sellerId": 5,
+      "id": 17
     }
   ],
   "sellers": [

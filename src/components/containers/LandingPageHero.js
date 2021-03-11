@@ -5,7 +5,6 @@ import Button from '../parts/Button';
 import Typography from '../parts/Typography';
 import ProductHeroLayout from '../parts/ProductHeroLayout';
 
-
 const backgroundImage =
   'https://images.unsplash.com/photo-1505496704829-37e28089504e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2850&q=80';
 

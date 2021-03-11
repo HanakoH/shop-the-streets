@@ -73,7 +73,7 @@ const theme = {
       ...rawTheme.typography.h1,
       fontWeight: rawTheme.typography.fontWeightRegular,
       letterSpacing: 0,
-      fontSize: 60,
+      fontSize: 42,
     },
     h2: {
       ...rawTheme.typography.h2,
